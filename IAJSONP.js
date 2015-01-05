@@ -2,7 +2,7 @@ var IAJSONP = (function () {
 
     var module = {};
 
-    function addJavascriptFile(url, context) {
+    module.addJavascriptFile = function (url, context) {
         context = context || document;
         var head = context.getElementsByTagName('head')[0];
         var js = context.createElement('script');
@@ -32,9 +32,7 @@ var IAJSONP = (function () {
 
         //manipulating and adding js file to head
         var endurl = url.indexOf('?') != -1 ? url + '&callback=' + func : url + '?callback=' + func;
-        var js = addJavascriptFile(endurl);
+        var js = module.addJavascriptFile(endurl);
     }
-    
     return module;
-
 })();
